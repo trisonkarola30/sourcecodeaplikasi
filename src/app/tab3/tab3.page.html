@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Data Angkutan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+ <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+  <ion-refresher-content
+    pullingIcon="arrow-dropdown"
+    pullingText="Pull to refresh"
+    refreshingSpinner="circles"
+    refreshingText="Refreshing...">
+  </ion-refresher-content>
+</ion-refresher>
+
+<ion-card *ngFor="let kama of kamas">
+  <ion-card-header>
+    <ion-card-subtitle>nopol: {{kama.nopol}}, tahun mobil: {{kama.tahun_mobil}}</ion-card-subtitle>
+    <ion-card-title>{{kama.nama_supir}}</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    No.Hp: {{kama.nohp}},
+    Alamat: {{kama.alamat}}
+  </ion-card-content>
+</ion-card>
+
+
+
+<ion-infinite-scroll  (ionInfinite)="loadData($event)">
+  <ion-infinite-scroll-content
+    loadingSpinner="bubbles"
+    loadingText="Loading more data...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
+
+</ion-content>
